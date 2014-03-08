@@ -1,7 +1,7 @@
 {
   "name": "image-zoom",
-  "repo": "bmcmahen/image-zoom",
-  "description": "zoom a thumbnail to its full size",
+  "repo": "fredsterss/image-zoom",
+  "description": "zoom a thumbnail to its full size, with a js API that actually works.",
   "version": "0.0.1",
   "keywords": [
     "thumbnail",
@@ -9,24 +9,14 @@
     "gallery"
   ],
   "dependencies": {
+    "component/css": "*",
     "component/classes": "*",
+    "segmentio/modal": "*",
     "component/emitter": "*",
-    "component/transform-property": "*",
-    "ianstormtaylor/redraw": "*",
-    "component/events": "*",
-    "anthonyshort/after-transition": "*",
-    "bmcmahen/scale-to-bounds": "*",
-    "bmcmahen/viewport": "*",
-    "component/has-translate3d": "*",
-    "bmcmahen/overlay": "*",
-    "component/delegate": "*",
-    "javve/get-attribute": "*",
-    "bmcmahen/target": "*",
-    "yields/prevent": "*"
+    "component/events": "*"
   },
   "development": {},
   "license": "MIT",
-  "demo": "http://benmcmahen.com/image-zoom/index.html",
   "main": "index.js",
   "scripts": [
     "index.js"

@@ -1,4 +1,4 @@
-.zoom-image-clone {
+/*.zoom-image-clone {
   position: fixed;
   -moz-transition: -moz-transform 0.23s linear;
   -ms-transition: -ms-transform 0.23s linear;
@@ -21,3 +21,19 @@
   background-color: rgba(255,255,255,0.97);
 }
 
+*/
+
+.Overlay {
+  background-color: #fff;
+  background-color: rgba(255,255,255,0.9);
+}
+
+/* override the segmentio modal defaults */
+.Modal {
+  top: 50% !important;
+  max-width: 1000000px;
+}
+
+.Modal > img {
+  width: 100%;
+}
