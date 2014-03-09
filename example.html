@@ -14,13 +14,6 @@ body {
   margin: 0;
 }
 
-.thumb {
-  cursor: -webkit-zoom-in;
-  cursor: -moz-zoom-in;
-  cursor: -ms-zoom-in;
-  cursor: zoom-in;
-}
-
 </style>
 </head>
 <body>
@@ -32,6 +25,7 @@ body {
 <script>
 var zoom = require('image-zoom');
 var z = new zoom(document.querySelector('img'));
+z.padding(20);
 // z.overlay();
 // z.on('showing', function(){
 //   console.log('showing');

@@ -23,17 +23,35 @@
 
 */
 
-.Overlay {
+img.zoomable {
+  cursor: -webkit-zoom-in;
+  cursor: -moz-zoom-in;
+  cursor: -ms-zoom-in;
+  cursor: zoom-in;
+}
+
+img.zoomed-image {
+  cursor: -webkit-zoom-out;
+  cursor: -moz-zoom-out;
+  cursor: -ms-zoom-out;
+  cursor: zoom-out;  
+}
+
+.Overlay.zoomed {
   background-color: #fff;
   background-color: rgba(255,255,255,0.9);
 }
 
 /* override the segmentio modal defaults */
-.Modal {
+.Modal.zoomed {
   top: 50% !important;
-  max-width: 1000000px;
+  max-width: inherit !important;
+  background-color: #fff;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
 }
 
-.Modal > img {
+.Modal.zoomed > img {
   width: 100%;
 }
