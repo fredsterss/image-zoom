@@ -30,7 +30,7 @@ img.zoomable {
   cursor: zoom-in;
 }
 
-img.zoomed-image {
+.zoomed {
   cursor: -webkit-zoom-out;
   cursor: -moz-zoom-out;
   cursor: -ms-zoom-out;
