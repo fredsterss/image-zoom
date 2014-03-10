@@ -1,5 +1,5 @@
 
-build: components index.js image-zoom.css
+build: components lib/index.js lib/index.css
 	@component build --dev
 
 components: component.json
