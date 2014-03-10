@@ -25,19 +25,18 @@ body {
 var zoom = require('image-zoom');
 var z = new zoom(document.querySelector('img'));
 z.margin(20);
-// z.overlay();
-// z.on('showing', function(){
-//   console.log('showing');
-// });
-// z.on('shown', function(){
-//   console.log('shown');
-// });
-// z.on('hiding', function(){
-//   console.log('hiding');
-// });
-// z.on('hidden', function(){
-//   console.log('hidden');
-// });
+z.on('showing', function(){
+  console.log('showing');
+});
+z.on('shown', function(){
+  console.log('shown');
+});
+z.on('hiding', function(){
+  console.log('hiding');
+});
+z.on('hidden', function(){
+  console.log('hidden');
+});
 </script>
 
 </body>

@@ -1,5 +1,3 @@
-// TODO:
-//  - event emitting
 var classes = require('classes')
   , css = require('css')
   , Emitter = require('emitter')
@@ -28,6 +26,11 @@ function Zoom (el) {
 }
 
 /**
+ * Mixin emitter
+ */
+Emitter(Zoom.prototype);
+
+/**
  * Sets margin around modal
  * @param  {Number} amount in px
  * @return {Zoom}
@@ -51,6 +54,7 @@ Zoom.prototype.bind = function() {
  * @return {[type]} [description]
  */
 Zoom.prototype.show = function () {
+  this.emit('showing');
   this.loadImage();
   return this;
 }
@@ -85,7 +89,8 @@ Zoom.prototype.showImage = function (img) {
   this.modalEvents = events(this.modal.el, this);
   this.modalEvents.bind('click', 'hideModal');
   this.setSize(img, this.modal);
-  this.modal.show();
+  var self = this;
+  this.modal.show(function () { self.emit('shown'); });
 }
 
 /**
@@ -135,6 +140,8 @@ Zoom.prototype.setModalStyle = function (prop, val) {
  * @return {Zoom}
  */
 Zoom.prototype.hideModal = function () {
-  this.modal.hide();
+  this.emit('hiding');
+  var self = this;
+  this.modal.hide(function () { self.emit('hidden'); });
   return this;
 }
