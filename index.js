@@ -1,18 +1,21 @@
 // TODO:
 //  - event emitting
-//  - dynamic classes
 var classes = require('classes')
   , css = require('css')
   , Emitter = require('emitter')
   , events = require('events')
   , modal = require('modal');
 
-var defaults = {
-  padding: 20
-}
-
+/**
+ * Expose Zoom
+ */
 module.exports = Zoom;
 
+/**
+ * Initialize new Zoom instance
+ * @param {Element} element to make zoomable (must be an image)
+ * @return {Zoom}
+ */
 function Zoom (el) {
   if (!(this instanceof Zoom)) return new Zoom(el);
   classes(el).add('zoomable');
@@ -24,53 +27,78 @@ function Zoom (el) {
   return this;
 }
 
-Zoom.prototype.padding = function (num) {
+/**
+ * Sets margin around modal
+ * @param  {Number} amount in px
+ * @return {Zoom}
+ */
+Zoom.prototype.margin = function (num) {
   this._margin = num;
   return this;
 }
 
+/**
+ * Binds click listener
+ * @return {Zoom}
+ */
 Zoom.prototype.bind = function() {
   this.events.bind('click', 'show');
   return this;
 }
 
+/**
+ * [show description]
+ * @return {[type]} [description]
+ */
 Zoom.prototype.show = function () {
   this.loadImage();
   return this;
 }
 
+/**
+ * Load large image
+ * @return {Zoom}
+ */
 Zoom.prototype.loadImage = function () {
   var img = new Image();
   classes(img).add('zoomed-image')
   var self = this;
   img.onload = function() {
-    self.showOverlay(img);
+    self.showImage(img);
   }
   img.src = this.thumb.src;
   return this;
 }
 
-Zoom.prototype.showOverlay = function (img) {
+/**
+ * Show the image
+ * @param  {El} img Element
+ * @return {Zoom}
+ */
+Zoom.prototype.showImage = function (img) {
   this.modal = modal(img)
     .overlay()
     .effect('fade-and-scale')
     .closeable();
   classes(this.modal.el).add('zoomed');
   classes(this.modal._overlay.el).add('zoomed');
-
   this.modalEvents = events(this.modal.el, this);
   this.modalEvents.bind('click', 'hideModal');
   this.setSize(img, this.modal);
   this.modal.show();
 }
 
-Zoom.prototype.setSize = function (image, modal) {
+/**
+ * Intelligently set image size
+ * @param {Image}
+ * @return {Zoom}
+ */
+Zoom.prototype.setSize = function (image) {
   var width = null
     , height = null
     , xBound = window.innerWidth - (2 * this._margin)
     , yBound = window.innerHeight - (2 * this._margin);
 
-  // If width is bigger than max set it to windowWidth - padding
   if (image.width > xBound) {
     width = xBound;
   } else if (image.height > yBound) {
@@ -80,32 +108,32 @@ Zoom.prototype.setSize = function (image, modal) {
   }
   
   if (width !== null) {
-    this.setModalStyle(modal, 'width', width);
+    this.setModalStyle('width', width);
     var ratio = image.width / width;
-    this.setModalMargin(modal, image.height / ratio);
+    this.setModalStyle('margin-top',  -((image.height / ratio) / 2));
   } else if (height !== null) {
-    this.setModalStyle(modal, 'height', height);
-    this.setModalMargin(modal, height);
+    this.setModalStyle('height', height + "px");
+    this.setModalStyle('margin-top', "-" + (height / 2) + "px");
   }
-}
 
-Zoom.prototype.setModalStyle = function (modal, prop, val) {
-  console.log(modal.el, prop, val);
-  css(modal.el, prop, val);
   return this;
 }
 
-Zoom.prototype.setModalMargin = function (modal, imageHeight) {
-  console.log(imageHeight);
-  css(modal.el, 'margin-top', -(imageHeight / 2));
+/**
+ * Abstraction function to set modal css
+ * @param {String} Property string
+ * @param {String} Value to set it to
+ */
+Zoom.prototype.setModalStyle = function (prop, val) {
+  css(this.modal.el, prop, val);
+  return this;
 }
 
-Zoom.prototype.willOverlapWindow = function (width, height) {
-  if (width > window.innerWidth) { return true; } 
-  else if (height > window.innerHeight) { return true; }
-  return false;
-}
-
+/**
+ * Abstraction function to hide the modal, used 
+ * due to scope phailz.
+ * @return {Zoom}
+ */
 Zoom.prototype.hideModal = function () {
   this.modal.hide();
   return this;
