@@ -4,7 +4,7 @@ Simple image zooming component that zooms the image to full size, or to the scre
 
 Lightweight by virtue of being built on top of [segmentio/modal](https://github.com/segmentio/modal).
 
-## Usage
+### Usage
 
 Require zoom:
 
