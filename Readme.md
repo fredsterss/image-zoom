@@ -20,7 +20,7 @@ var z = new zoom(document.querySelector('img')).margin(20);
 Multiple images:
 
 ```javascript
-var thumbs = document.querySelectorAll('img')
+var thumbs = document.querySelectorAll('img');
 for (i = 0; i < thumbs.length; i++) {
   var z = new Zoom(thumbs[i]).margin(20);
 }
