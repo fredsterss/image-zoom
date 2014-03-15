@@ -24,8 +24,7 @@ body {
 
 <script>
 var Zoom = require('image-zoom');
-var z = new Zoom(document.querySelector('img'));
-z.margin(20);
+var z = new Zoom(document.querySelector('img')).margin(20);
 z.on('showing', function(){
   console.log('showing');
 });
