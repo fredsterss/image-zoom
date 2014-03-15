@@ -19,23 +19,29 @@ body {
 <body>
 
 <h1> some text </h1>
-<img class='thumb' src='inst6.jpg' data-zoom-padding='100' data-zoom-url='inst6.jpg' data-zoom-overlay='true'>
+
+<img class='thumb' src='inst6.jpg'>
+<img class='thumb' src='inst6.jpg'>
+<img class='thumb' src='inst6.jpg'>
+<img class='thumb' src='inst6.jpg'>
+<img class='thumb' src='inst6.jpg'>
+
 <p> Lorem ipsum In in occaecat ut enim consectetur reprehenderit mollit do Ut labore mollit sed sit sint voluptate id ullamco ad proident aute non commodo sint dolore eiusmod velit non.</p>
 <script>
-var zoom = require('image-zoom');
-var z = new zoom(document.querySelector('img'));
+var Zoom = require('image-zoom');
+var z = new Zoom(document.querySelector('img'));
 z.margin(20);
 z.on('showing', function(){
   console.log('showing');
 });
-z.on('shown', function(){
-  console.log('shown');
+z.on('show', function(){
+  console.log('show');
 });
 z.on('hiding', function(){
   console.log('hiding');
 });
-z.on('hidden', function(){
-  console.log('hidden');
+z.on('hide', function(){
+  console.log('hide');
 });
 </script>
 
