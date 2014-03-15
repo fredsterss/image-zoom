@@ -1,0 +1,38 @@
+<html>
+<head>
+  <title></title>
+<script src='../build/build.js'></script>
+<link href='../build/build.css' rel='stylesheet'>
+
+<style>
+.thumb {
+  width: 175px;
+  margin-left: 520px;
+}
+
+body {
+  margin: 0;
+}
+
+</style>
+</head>
+<body>
+
+<h1> some text </h1>
+
+<img class='thumb' src='inst6.jpg'>
+<img class='thumb' src='inst6.jpg'>
+<img class='thumb' src='inst6.jpg'>
+<img class='thumb' src='inst6.jpg'>
+<img class='thumb' src='inst6.jpg'>
+
+<script>
+var Zoom = require('image-zoom');
+var thumbs = document.querySelectorAll('img')
+for (i = 0; i < thumbs.length; i++) {
+  var z = new Zoom(thumbs[i]).margin(20);
+}
+</script>
+
+</body>
+</html>
