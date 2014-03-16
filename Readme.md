@@ -1,6 +1,8 @@
 # image-zoom
 
-Simple image zooming component that zooms the image to full size, or to the screen size. 
+Simple image zooming component that zooms the image to full size, or to the screen size.
+
+[Demo](http://image-zoom.brace.io/).
 
 Lightweight by virtue of being built on top of [segmentio/modal](https://github.com/segmentio/modal).
 
